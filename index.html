@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="SCORM sample">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="scorm_sample">
+  
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>scorm_sample</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+      #app-container {
+        height: 960px;
+        width: 100%;
+        background-color: white;
+        margin: 0 auto;
+        border: none;
+      }
+
+  </style>
+</head>
+<body height="100%" width="100%">
+
+<!-- https://github.com/gabrieldoty/simplify-scorm -->
+<!-- Dummy SCORM Run Time Environment for testing -->
+<script type="text/javascript" src="/scormAPI.js"></script>
+<script type="text/javascript">
+    window.API.on("LMSInitialize", function() {
+      alert("Initialize called");
+      return true;
+    });
+    window.API.on("LMSCommit", function() {
+      alert(window.API.cmi.toJSON().toString());
+    });
+    window.API.on("LMSFinish", function() {
+      alert("Finish called");
+      return true;
+    });
+</script>
+<iframe id="app-container" src="flutter-app.html", allow="autoplay"></iframe>
+
+
+</body>
+</html>
